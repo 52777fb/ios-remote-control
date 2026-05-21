@@ -1,16 +1,16 @@
-Package: com.zxc.simpleremotecontrol
-Version: 0.1.5
+Package: com.ctf.devicecontroller000
+Version: 0.1.6
 Architecture: iphoneos-arm
-Maintainer: zxc
+Maintainer: CTF Team
 Installed-Size: 4500
 Depends: mobilesubstrate, preferenceloader
-Filename: ./debs/com.zxc.simpleremotecontrol_0.1.5_iphoneos-arm.deb
-Size: 1218932
-MD5sum: 91d9e05676b018d6963f5ebabb726b1b
-SHA1: d8d8dd79090bb3796745f9eeb2532d39aecf13d3
-SHA256: e487772da403b33d0aed11bc122ca6c9bb2afa7411ae2b26d6135fb4fa551ce0
+Filename: ./debs/com.ctf.devicecontroller000_0.1.6_iphoneos-arm.deb
+Size: 1725828
+MD5sum: 97d331b2a7f5c48aefa1653a3d46996a
+SHA1: 2084b7635ca7a5d237040e1d51c6cf092ae88609
+SHA256: f1ffe9640b81da825ba89bc029f164c335170f5413af57f347a30dcd4debe4fc
 Section: Tweaks
-Description: 一个简单的远程控制手机插件,欢迎微信关注《小白技术社》(仅支持ios13+)
- 使用方法 内网下 http://手机ip:58586 同时websocket使用58587端口
-Author: zxc
-Name: iOS远控
+Description: Internal device-control test package for authorized competition devices.
+ Web console: http://device-ip:58586. WebSocket channel: 58587.
+Author: CTF Team
+Name: Device Control
