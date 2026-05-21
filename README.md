@@ -1,18 +1,18 @@
-# iOS Remote Control Sileo Repo
+# 设备控制 Sileo 源
 
-Sileo source:
+Sileo 源：
 
 ```text
 https://52777fb.github.io/ios-remote-control/
 ```
 
-Package:
+软件包：
 
 - `com.ctf.devicecontroller000`
 - rootful / palera1n
-- iOS 16.7.10 test target
+- iOS 16.7.10 测试目标
 
-Regenerate indexes:
+重新生成索引：
 
 ```powershell
 python ..\make_sileo_repo.py
