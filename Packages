@@ -1,0 +1,16 @@
+Package: com.zxc.simpleremotecontrol
+Version: 0.1.5
+Architecture: iphoneos-arm
+Maintainer: zxc
+Installed-Size: 4500
+Depends: mobilesubstrate, preferenceloader
+Filename: ./debs/com.zxc.simpleremotecontrol_0.1.5_iphoneos-arm.deb
+Size: 1218932
+MD5sum: 91d9e05676b018d6963f5ebabb726b1b
+SHA1: d8d8dd79090bb3796745f9eeb2532d39aecf13d3
+SHA256: e487772da403b33d0aed11bc122ca6c9bb2afa7411ae2b26d6135fb4fa551ce0
+Section: Tweaks
+Description: 一个简单的远程控制手机插件,欢迎微信关注《小白技术社》(仅支持ios13+)
+ 使用方法 内网下 http://手机ip:58586 同时websocket使用58587端口
+Author: zxc
+Name: iOS远控
