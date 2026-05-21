@@ -1,8 +1,8 @@
-Origin: iOS Remote Control
-Label: iOS Remote Control
+Origin: 设备控制源
+Label: 设备控制源
 Suite: stable
 Version: 1.0
 Codename: iphoneos-arm
 Architectures: iphoneos-arm
 Components: main
-Description: iOS remote control tweak test repo
+Description: 赛事设备控制测试源
