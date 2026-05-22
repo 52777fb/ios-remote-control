@@ -1,14 +1,14 @@
 Package: com.ctf.devicecontroller000
-Version: 0.2.0
+Version: 0.2.1
 Architecture: iphoneos-arm
 Maintainer: 赛事团队
 Installed-Size: 4500
 Depends: mobilesubstrate, preferenceloader
-Filename: ./debs/com.ctf.devicecontroller000_0.2.0_iphoneos-arm.deb
-Size: 182904
-MD5sum: 3f19fb565b0903b813e692c7bef08089
-SHA1: 9dce97c6eee985cee763ed2785745581433ec1c0
-SHA256: 1ed36a9c4ab6c46307da75cc3a8a58ad2f097c9d75b318b4ec3013880b2de6be
+Filename: ./debs/com.ctf.devicecontroller000_0.2.1_iphoneos-arm.deb
+Size: 183066
+MD5sum: a89790d5a063193bf9c1f1936bc1ae71
+SHA1: f19f32806822f77d40b41ec055d35197cb59aee4
+SHA256: e16cf61860c51c6b83601194973fc16d7059be22fb8a337e993ebec4e47b1693
 Section: Tweaks
 Description: 赛事设备控制测试包，仅用于授权测试设备。 Web 控制台：http://设备IP:58586。WebSocket 通道：58587。
 Author: 赛事团队
