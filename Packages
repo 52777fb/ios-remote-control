@@ -22,13 +22,13 @@ Author: CTF Team
 Section: Tweaks
 Depends: preferenceloader, com.ctf.sbnetprobe
 Architecture: iphoneos-arm
-Version: 0.2.2
+Version: 0.2.3
 Installed-Size: 128
-Filename: ./debs/com.ctf.cellguard_0.2.2_iphoneos-arm.deb
-Size: 6280
-MD5sum: 234ba28d311956bb2abcc8e39ced6d6c
-SHA1: e6d5c8ac44a97d2d64255e442577fad10d10d8bb
-SHA256: 1add73c14ec2d93d5065b35a53ebcce25d7c9b5553ca0a4970119d559e00c47e
+Filename: ./debs/com.ctf.cellguard_0.2.3_iphoneos-arm.deb
+Size: 6386
+MD5sum: 40dede9a8cde1161d08d0d1c85e1d7cb
+SHA1: a4871909faaa9d3dc7f9c3103314771b19ad3c05
+SHA256: 1cc26d7ee30e2c8a824633d8a89379fdfa4b176231c59966628d4cf9946be595
 
 Package: com.ctf.rcwake
 Name: 远控唤醒命令
