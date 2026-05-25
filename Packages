@@ -22,13 +22,13 @@ Author: 赛事团队
 Section: Tweaks
 Depends: preferenceloader
 Architecture: iphoneos-arm
-Version: 0.1.8
+Version: 0.1.9
 Installed-Size: 120
-Filename: ./debs/com.ctf.cellguard_0.1.8_iphoneos-arm.deb
-Size: 4940
-MD5sum: b16836e99d31ada90a8cec9986362b33
-SHA1: 981c3eb7c6f5a4392d21646efe0265be9a73a0ba
-SHA256: ddbd6625737b0ba79d002b192a748ecb7d9f2c771cb8b2505794b025237d717e
+Filename: ./debs/com.ctf.cellguard_0.1.9_iphoneos-arm.deb
+Size: 5714
+MD5sum: 8ad783d924a73a41065c2d8124093963
+SHA1: d3f136750ba570550ddd4117b946ec9de81a5214
+SHA256: e5e2f5f9600292fdf9a9459b49241aa734f00b8b7f2e183712e7b55f2f5ee110
 
 Package: com.ctf.rcwake
 Name: 远控唤醒命令
