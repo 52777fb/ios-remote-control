@@ -1,5 +1,4 @@
-# 设备控制 Sileo 源
-Sileo 源：
+# iOS远控 Sileo 源
 
 ```text
 https://52777fb.github.io/ios-remote-control/
@@ -7,11 +6,7 @@ https://52777fb.github.io/ios-remote-control/
 
 软件包：
 
-- `com.ctf.devicecontroller000`
+- `com.zxc.simpleremotecontrol`
 - rootful / palera1n
-- iOS 16.7.10 测试目标
-
-重新生成索引：
-```powershell
-python ..\make_sileo_repo.py
-```
+- Web: `http://设备IP:58586`
+- WebSocket: `58587`
