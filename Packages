@@ -16,19 +16,19 @@ SHA256: 59293dbd56babe5de66542508a903667bded552d13dd3f1e46372e2b8715c28a
 
 Package: com.ctf.cellguard
 Name: Safari cellular guard
-Description: Safari cellular 1MB/1min guard. Uses sbnetctl/SpringBoard to turn Wi-Fi off at session start and restore it on limit, timeout, or manual disable.
+Description: Safari cellular 1MB/1min guard with Settings controls and Wi-Fi restore action.
 Maintainer: CTF Team
 Author: CTF Team
 Section: Tweaks
 Depends: preferenceloader, com.ctf.sbnetprobe
 Architecture: iphoneos-arm
-Version: 0.2.3
+Version: 0.2.4
 Installed-Size: 128
-Filename: ./debs/com.ctf.cellguard_0.2.3_iphoneos-arm.deb
-Size: 6386
-MD5sum: 40dede9a8cde1161d08d0d1c85e1d7cb
-SHA1: a4871909faaa9d3dc7f9c3103314771b19ad3c05
-SHA256: 1cc26d7ee30e2c8a824633d8a89379fdfa4b176231c59966628d4cf9946be595
+Filename: ./debs/com.ctf.cellguard_0.2.4_iphoneos-arm.deb
+Size: 6492
+MD5sum: efd2d9ac920601544e0ea077e6f046be
+SHA1: c2356c543754a02d99ea9b9ca201103e5074df76
+SHA256: 1a1fb69f66c7a0a90e8f06c17003c015fe66017d942b0df47e89696e55e6b83a
 
 Package: com.ctf.rcwake
 Name: 远控唤醒命令
