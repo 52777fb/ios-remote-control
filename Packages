@@ -22,10 +22,10 @@ Author: 赛事团队
 Section: Tweaks
 Depends: preferenceloader
 Architecture: iphoneos-arm
-Version: 0.1.2
+Version: 0.1.3
 Installed-Size: 120
-Filename: ./debs/com.ctf.cellguard_0.1.2_iphoneos-arm.deb
-Size: 3324
-MD5sum: b82fbb9ed68a0cc0cad2fe3155ed53b4
-SHA1: ac92b54cd5f424d7ee3fa1aa4b7b2a0181b090ec
-SHA256: 6762c83c4707a96f22b4b83c14ad7ff71893c2400e0e486ccafdfb4033621ab2
+Filename: ./debs/com.ctf.cellguard_0.1.3_iphoneos-arm.deb
+Size: 2694
+MD5sum: 19c205adeabb6bf9968bf91ceb4a1249
+SHA1: 549f23c4aac82493e2669853515bb43a716ae494
+SHA256: dfb588d416f3f168f4215bf71229f1628d158a917868ad2f14a3b51affb6f05d
