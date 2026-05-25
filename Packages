@@ -29,3 +29,18 @@ Size: 4940
 MD5sum: b16836e99d31ada90a8cec9986362b33
 SHA1: 981c3eb7c6f5a4392d21646efe0265be9a73a0ba
 SHA256: ddbd6625737b0ba79d002b192a748ecb7d9f2c771cb8b2505794b025237d717e
+
+Package: com.ctf.rcwake
+Name: 远控唤醒命令
+Description: 为远控服务提供命令行锁定/唤醒工具 rcwake，通过本机 WebSocket 发送与网页按钮相同的动作。
+Maintainer: CTF Team
+Author: CTF Team
+Section: Utilities
+Architecture: iphoneos-arm
+Version: 0.1.0
+Installed-Size: 80
+Filename: ./debs/com.ctf.rcwake_0.1.0_iphoneos-arm.deb
+Size: 2498
+MD5sum: c796aeef0bd227e1e0786b31d4163fd4
+SHA1: 18cd77257d25000f9ce2a7457dc5ae53b02248af
+SHA256: 64a93b52389966732dbe4061bd601e7e76ba2a9fb06ead0a6d2f21dfcbaf0a31
