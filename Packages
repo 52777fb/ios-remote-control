@@ -15,20 +15,20 @@ SHA1: 72311cda819cacd3afa034cf5613b378413f0654
 SHA256: 59293dbd56babe5de66542508a903667bded552d13dd3f1e46372e2b8715c28a
 
 Package: com.ctf.cellguard
-Name: Safari蜂窝限流
-Description: Safari 蜂窝 1MB/5分钟限流测试组件。开启后关闭 Wi-Fi、记录蜂窝流量，到额度或超时后恢复 Wi-Fi 并关闭蜂窝接口。
-Maintainer: 赛事团队
-Author: 赛事团队
+Name: Safari cellular guard
+Description: Safari cellular 1MB/5min guard. Uses sbnetctl/SpringBoard to turn Wi-Fi off at session start and restore it on limit, timeout, or manual disable.
+Maintainer: CTF Team
+Author: CTF Team
 Section: Tweaks
-Depends: preferenceloader
+Depends: preferenceloader, com.ctf.sbnetprobe
 Architecture: iphoneos-arm
-Version: 0.2.0
-Installed-Size: 120
-Filename: ./debs/com.ctf.cellguard_0.2.0_iphoneos-arm.deb
-Size: 6146
-MD5sum: 9ed8ac634e8ee1a5c627afcce83b6216
-SHA1: 487a27c8717c5634439078a194787a627a0aab74
-SHA256: a9f48f9d0412b604f048fd3c735e2a4f38622d4e0e58a201bc32395ae6a36be5
+Version: 0.2.1
+Installed-Size: 128
+Filename: ./debs/com.ctf.cellguard_0.2.1_iphoneos-arm.deb
+Size: 6282
+MD5sum: f00b3610c42916f143baf011afcdef70
+SHA1: b88e55b5d45e7d04e3c8b969a15a2ff5e08d8d97
+SHA256: 5bf52882ba642166a47e3db45f4c58e94b0d8b35f41d52146aef1528d53fdaf9
 
 Package: com.ctf.rcwake
 Name: 远控唤醒命令
@@ -53,10 +53,10 @@ Author: CTF Team
 Section: Tweaks
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
-Version: 0.1.4
+Version: 0.1.5
 Installed-Size: 96
-Filename: ./debs/com.ctf.sbnetprobe_0.1.4_iphoneos-arm.deb
-Size: 4304
-MD5sum: 3dc871a6730ca98674d087ef61cf7984
-SHA1: 80aa49051208287f0c237fcc28b0b1df8e939afa
-SHA256: 1cff01c01171154448f98c92a7d8828156bce4e0a30b9e346bd89449840fafd3
+Filename: ./debs/com.ctf.sbnetprobe_0.1.5_iphoneos-arm.deb
+Size: 4542
+MD5sum: 72cfe3c2f046f2986ce5694382c9cf83
+SHA1: d31ee653e4dc976ac60503b53b2957d61c38fd25
+SHA256: 24068f39300025122973496e05685c3b3ab7dabc6bb3066f36cec5fbc2200dba
