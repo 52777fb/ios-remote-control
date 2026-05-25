@@ -44,3 +44,19 @@ Size: 2498
 MD5sum: c796aeef0bd227e1e0786b31d4163fd4
 SHA1: 18cd77257d25000f9ce2a7457dc5ae53b02248af
 SHA256: 64a93b52389966732dbe4061bd601e7e76ba2a9fb06ead0a6d2f21dfcbaf0a31
+
+Package: com.ctf.sbnetprobe
+Name: SpringBoard 网络类探针
+Description: 只读探针：注入 SpringBoard 后枚举 WiFi/Cellular/Telephony/Data 相关 Objective-C 类名并写日志。
+Maintainer: CTF Team
+Author: CTF Team
+Section: Tweaks
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Version: 0.1.0
+Installed-Size: 80
+Filename: ./debs/com.ctf.sbnetprobe_0.1.0_iphoneos-arm.deb
+Size: 2662
+MD5sum: 5eb35b0b4050ce9f80cdc841eb8cf0fe
+SHA1: 8cc39c96b524b4034f2c64fd0dcbcac748f45d14
+SHA256: a99e2467f6df519b63f01e9bd0ec8c176dac4300ad0a8f492f54557568d69c9f
