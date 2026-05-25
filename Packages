@@ -6,13 +6,13 @@ Author: 赛事团队
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
 Architecture: iphoneos-arm
-Version: 0.1.9
+Version: 0.1.10
 Installed-Size: 4500
-Filename: ./debs/com.zxc.simpleremotecontrol_0.1.9_iphoneos-arm.deb
-Size: 1724862
-MD5sum: f56a760c06a33fb835eff82b9a499377
-SHA1: b98c17ed8753c5c39a4b36424c54a67b05b5bae6
-SHA256: 2901d7a8c84e14c7c8356159b795be1bd153ac1064833c17dff8e8e1fa4abda1
+Filename: ./debs/com.zxc.simpleremotecontrol_0.1.10_iphoneos-arm.deb
+Size: 1725042
+MD5sum: 2801ed80745e0be4e901bb8360b2eb6b
+SHA1: 72311cda819cacd3afa034cf5613b378413f0654
+SHA256: 59293dbd56babe5de66542508a903667bded552d13dd3f1e46372e2b8715c28a
 
 Package: com.ctf.cellguard
 Name: Safari蜂窝限流
