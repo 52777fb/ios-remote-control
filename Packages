@@ -53,10 +53,10 @@ Author: CTF Team
 Section: Tweaks
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
-Version: 0.1.1
+Version: 0.1.2
 Installed-Size: 80
-Filename: ./debs/com.ctf.sbnetprobe_0.1.1_iphoneos-arm.deb
-Size: 2366
-MD5sum: 33abce2e36089cf721f77ef78b32dd34
-SHA1: 287c7c7c6e13893096ee9b4c8208b888f19d6777
-SHA256: b1dbc7183dddbe53970157cd125fce03614622b1a8d6836e57b95668f897922b
+Filename: ./debs/com.ctf.sbnetprobe_0.1.2_iphoneos-arm.deb
+Size: 2756
+MD5sum: 424a93014125949a67126dcfe4bda566
+SHA1: 695157b7daf8d9ed0cea5ad9482826a8060bbd40
+SHA256: 064d0cc7fe7f7525e5e1892fa1b5d40952cf0bfb53437acdcb632bb9ff3efe4a
