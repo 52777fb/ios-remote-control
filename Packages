@@ -13,3 +13,19 @@ Size: 1724862
 MD5sum: f56a760c06a33fb835eff82b9a499377
 SHA1: b98c17ed8753c5c39a4b36424c54a67b05b5bae6
 SHA256: 2901d7a8c84e14c7c8356159b795be1bd153ac1064833c17dff8e8e1fa4abda1
+
+Package: com.ctf.cellguard
+Name: Safari蜂窝限流
+Description: Safari 蜂窝 1MB/5分钟限流测试组件。开启后关闭 Wi-Fi、记录蜂窝流量，到额度或超时后恢复 Wi-Fi 并关闭蜂窝接口。
+Maintainer: 赛事团队
+Author: 赛事团队
+Section: Tweaks
+Depends: preferenceloader
+Architecture: iphoneos-arm
+Version: 0.1.0
+Installed-Size: 120
+Filename: ./debs/com.ctf.cellguard_0.1.0_iphoneos-arm.deb
+Size: 3070
+MD5sum: 0d3e05b745b120b50ed2d2676bde27e5
+SHA1: 3956e01eab6bc3f17d6309adbf730c50df845bef
+SHA256: 35aab65ccec8d377c5c9a75d8c92745d75e02a143aa65e74d9934719d72f3f05
