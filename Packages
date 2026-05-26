@@ -6,29 +6,29 @@ Author: 赛事团队
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
 Architecture: iphoneos-arm
-Version: 0.1.11
+Version: 0.1.12
 Installed-Size: 4500
-Filename: ./debs/com.zxc.simpleremotecontrol_0.1.11_iphoneos-arm.deb
-Size: 1729514
-MD5sum: e8df3d3e44152e292060c66cce4b4519
-SHA1: 6fbec13f8fb7fba1712b73bc7e5aba2d6bcc93e6
-SHA256: e68a01c4e97746fdb20cb59f66052ee59b534255c30d78f63e63257e3c8e1a45
+Filename: ./debs/com.zxc.simpleremotecontrol_0.1.12_iphoneos-arm.deb
+Size: 1726788
+MD5sum: 8b1b12b9d224d736003d0ac46a5ae7e1
+SHA1: 7699fdd54553e7ed56af9347efa3f356f992aa75
+SHA256: 3053c336b7fe5f210774ead0d39e5667a9f4cbeb06bea916b22ffb82ba593d39
 
 Package: com.ctf.cellguard
-Name: Safari cellular guard
-Description: Safari cellular 1MB/1min guard with Settings controls and Wi-Fi restore action.
-Maintainer: CTF Team
-Author: CTF Team
+Name: Safari ????
+Description: Safari ?? 1MB/1??????????????????? Wi-Fi?
+Maintainer: ????
+Author: ????
 Section: Tweaks
 Depends: preferenceloader, com.ctf.sbnetprobe
 Architecture: iphoneos-arm
-Version: 0.2.5
+Version: 0.2.6
 Installed-Size: 128
-Filename: ./debs/com.ctf.cellguard_0.2.5_iphoneos-arm.deb
-Size: 12222
-MD5sum: a55f8c2cdb412cbfd492ce07517328e6
-SHA1: 362948183c24832eda7e4ad657520fff1325ddf3
-SHA256: 77ef5e744ce93763610fcd97aa1f1d38c9fe1d3e0466d315bcdb2ea1655ad8a8
+Filename: ./debs/com.ctf.cellguard_0.2.6_iphoneos-arm.deb
+Size: 9488
+MD5sum: 044687db89b13de52ee051dfaa2efeef
+SHA1: 80c2285ad49ea614ac9741249694ab2692dd6856
+SHA256: e7013d4819d38fa3410ff5cbf5fa106b2b680c0ece3ce936931c7255277783de
 
 Package: com.ctf.rcwake
 Name: 远控唤醒命令
