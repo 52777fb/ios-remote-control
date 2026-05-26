@@ -6,11 +6,11 @@ Author: 赛事团队
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
 Architecture: iphoneos-arm
-Version: 0.1.19
+Version: 0.1.20
 Installed-Size: 4500
-Filename: ./debs/com.zxc.simpleremotecontrol_0.1.19_iphoneos-arm.deb
-Size: 1733280
-MD5sum: d9be81a77156563ba9671e29809e57b6
-SHA1: 712c482bb96a3b127594bb3435d1422e0d36cb21
-SHA256: 193a4f8ad281581c28cf1c18eca14b3163c64c226d0caca42c0e0d1fd9d9119a
+Filename: ./debs/com.zxc.simpleremotecontrol_0.1.20_iphoneos-arm.deb
+Size: 1733278
+MD5sum: c2f21886570ba39e5e79d85e9602f0ea
+SHA1: afbf3e1df4172642be42cd9593ce98adc2bdced6
+SHA256: 4f5c8f22ce6ca138eb68fd56b9247d46c17c7f5d21192c49d7c56422c554908a
 
