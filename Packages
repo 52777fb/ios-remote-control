@@ -16,19 +16,19 @@ SHA256: 59293dbd56babe5de66542508a903667bded552d13dd3f1e46372e2b8715c28a
 
 Package: com.ctf.cellguard
 Name: Safari cellular guard
-Description: Safari cellular 1MB/1min guard with Settings controls and Wi-Fi restore action.
+Description: Safari cellular 1MB/1min guard. Uses sbnetctl/SpringBoard to turn Wi-Fi off at session start and restore it on limit, timeout, or manual disable.
 Maintainer: CTF Team
 Author: CTF Team
 Section: Tweaks
 Depends: preferenceloader, com.ctf.sbnetprobe
 Architecture: iphoneos-arm
-Version: 0.2.4
+Version: 0.2.3
 Installed-Size: 128
-Filename: ./debs/com.ctf.cellguard_0.2.4_iphoneos-arm.deb
-Size: 6492
-MD5sum: efd2d9ac920601544e0ea077e6f046be
-SHA1: c2356c543754a02d99ea9b9ca201103e5074df76
-SHA256: 1a1fb69f66c7a0a90e8f06c17003c015fe66017d942b0df47e89696e55e6b83a
+Filename: ./debs/com.ctf.cellguard_0.2.3_iphoneos-arm.deb
+Size: 6386
+MD5sum: 40dede9a8cde1161d08d0d1c85e1d7cb
+SHA1: a4871909faaa9d3dc7f9c3103314771b19ad3c05
+SHA256: 1cc26d7ee30e2c8a824633d8a89379fdfa4b176231c59966628d4cf9946be595
 
 Package: com.ctf.rcwake
 Name: 远控唤醒命令
@@ -47,16 +47,16 @@ SHA256: 64a93b52389966732dbe4061bd601e7e76ba2a9fb06ead0a6d2f21dfcbaf0a31
 
 Package: com.ctf.sbnetprobe
 Name: SpringBoard network probe
-Description: SpringBoard Wi-Fi runtime probe/control bridge for authorized CTF traffic-control testing.
+Description: Minimal SpringBoard Wi-Fi control bridge with delayed startup and fail-safe restore.
 Maintainer: CTF Team
 Author: CTF Team
 Section: Tweaks
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
-Version: 0.1.5
+Version: 0.1.6
 Installed-Size: 96
-Filename: ./debs/com.ctf.sbnetprobe_0.1.5_iphoneos-arm.deb
-Size: 4542
-MD5sum: 72cfe3c2f046f2986ce5694382c9cf83
-SHA1: d31ee653e4dc976ac60503b53b2957d61c38fd25
-SHA256: 24068f39300025122973496e05685c3b3ab7dabc6bb3066f36cec5fbc2200dba
+Filename: ./debs/com.ctf.sbnetprobe_0.1.6_iphoneos-arm.deb
+Size: 3536
+MD5sum: f2589de7a5b39a531fb08a6f14e83087
+SHA1: ebe4a10ab354c594b92dfcb3c658d5e314c8d437
+SHA256: 8f460fe0170a2eaf420eeefe19d5b9c585566c68d830a95a120ec72113c121cc
