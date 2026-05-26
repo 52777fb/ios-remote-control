@@ -1,8 +1,7 @@
-Origin: iOS???
-Label: iOS???
+Origin: iOS Remote Control
+Label: iOS Remote Control
 Suite: stable
 Version: 1.0
-Codename: iphoneos-arm
+Codename: stable
 Architectures: iphoneos-arm
 Components: main
-Description: iOS?????
