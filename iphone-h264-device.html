@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>iPhone H264 WebRTC Device Gateway</title>
+  <style>
+    body { margin: 0; background: #20242a; color: #eee; font-family: system-ui, sans-serif; }
+    #bar { padding: 8px; background: #111; position: sticky; top: 0; z-index: 2; }
+    input, button { font-size: 14px; }
+    canvas { width: 260px; max-width: 90vw; background: #000; border: 1px solid #555; display: block; margin: 10px; }
+    pre { white-space: pre-wrap; font-size: 12px; margin: 10px; color: #bbb; }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    iPhone <input id="ip" value="192.168.31.72" size="14">
+    Room <input id="room" value="default" size="10">
+    FPS <input id="fps" value="30" size="3">
+    <button id="start">Start H264 device gateway</button>
+    <span id="status">idle</span>
+  </div>
+  <canvas id="screen" width="375" height="667"></canvas>
+  <pre id="log"></pre>
+  <script>
+    const canvas = document.getElementById("screen");
+    const ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
+    const statusEl = document.getElementById("status");
+    const logEl = document.getElementById("log");
+
+    let pc, room, ip, iphoneWs, h264Ws, decoder, width = 375, height = 667, fps = 30;
+    let videoTrack, frameCount = 0, h264Frames = 0, droppedFrames = 0, lastStat = performance.now(), timestamp = 0;
+
+    function status(s) { statusEl.textContent = s; }
+    function log(s) { logEl.textContent = `${new Date().toLocaleTimeString()} ${s}\n` + logEl.textContent.slice(0, 4000); }
+
+    async function send(to, type, data) {
+      await fetch("/api/send", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ room, to, type, data })
+      });
+    }
+
+    async function readSize() {
+      const r = await fetch(`http://${ip}:58586/screenSize?_=${Date.now()}`, { cache: "no-store" });
+      const j = await r.json();
+      width = Number(j.width || 375);
+      height = Number(j.height || 667);
+      canvas.width = width;
+      canvas.height = height;
+      log(`screen ${width}x${height}`);
+    }
+
+    function connectIphoneControlWs() {
+      iphoneWs = new WebSocket(`ws://${ip}:58587/`);
+      iphoneWs.onopen = () => {
+        log("iphone control ws open");
+        setInterval(() => { try { iphoneWs.send("PING"); } catch (_) {} }, 1000);
+      };
+      iphoneWs.onclose = () => setTimeout(connectIphoneControlWs, 1000);
+      iphoneWs.onerror = () => {};
+    }
+
+    function sendIphone(obj) {
+      if (iphoneWs && iphoneWs.readyState === 1) iphoneWs.send(JSON.stringify(obj));
+    }
+
+    function handleControl(data) {
+      let m;
+      try { m = JSON.parse(data); } catch { return; }
+      if (m.type === "action") {
+        sendIphone({ down: 1, type: "action", action: m.action || 1 });
+        setTimeout(() => sendIphone({ down: 0, type: "action", action: m.action || 1 }), 70);
+        return;
+      }
+      if (m.type !== "touch") return;
+      const touchType = m.phase === "down" ? 1 : m.phase === "move" ? 2 : 0;
+      sendIphone({
+        x: Math.round(m.x * width),
+        y: Math.round(m.y * height),
+        type: "touch",
+        touchType
+      });
+    }
+
+    function hasNal(data, type) {
+      for (let i = 0; i < data.length - 4; i++) {
+        let p = 0;
+        if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 1) p = i + 3;
+        else if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0 && data[i + 3] === 1) p = i + 4;
+        if (p && p < data.length && (data[p] & 0x1f) === type) return true;
+      }
+      return false;
+    }
+
+    async function initDecoder() {
+      if (!("VideoDecoder" in window)) throw new Error("Chrome/WebCodecs required");
+      decoder = new VideoDecoder({
+        output: frame => {
+          ctx.save();
+          ctx.translate(0, height);
+          ctx.scale(1, -1);
+          ctx.drawImage(frame, 0, 0, width, height);
+          ctx.restore();
+          frame.close();
+          frameCount++;
+          if (videoTrack && videoTrack.requestFrame) videoTrack.requestFrame();
+          const now = performance.now();
+          if (now - lastStat >= 1000) {
+            status(`h264 in ${h264Frames} fps, rendered ${frameCount} fps, drop ${droppedFrames}, q ${decoder.decodeQueueSize}, pc ${pc ? pc.connectionState : "none"}`);
+            h264Frames = 0;
+            frameCount = 0;
+            droppedFrames = 0;
+            lastStat = now;
+          }
+        },
+        error: e => log(`decoder error ${e.message || e}`)
+      });
+
+      const support = await VideoDecoder.isConfigSupported({
+        codec: "avc1.42E01E",
+        optimizeForLatency: true,
+        avc: { format: "annexb" }
+      });
+      if (!support.supported) log("annexb config not explicitly supported, trying anyway");
+      decoder.configure({
+        codec: "avc1.42E01E",
+        optimizeForLatency: true,
+        avc: { format: "annexb" }
+      });
+    }
+
+    function connectH264Ws() {
+      h264Ws = new WebSocket(`ws://${ip}:58588/`);
+      h264Ws.binaryType = "arraybuffer";
+      h264Ws.onopen = () => log("iphone h264 ws open");
+      h264Ws.onclose = () => {
+        log("iphone h264 ws closed; reconnecting");
+        setTimeout(connectH264Ws, 1000);
+      };
+      h264Ws.onerror = () => {};
+      h264Ws.onmessage = ev => {
+        if (!(ev.data instanceof ArrayBuffer) || !decoder) return;
+        const data = new Uint8Array(ev.data);
+        const isKey = hasNal(data, 5) || hasNal(data, 7);
+        if (!isKey && decoder.decodeQueueSize > 1) {
+          droppedFrames++;
+          return;
+        }
+        timestamp += Math.round(1000000 / fps);
+        try {
+          decoder.decode(new EncodedVideoChunk({
+            type: isKey ? "key" : "delta",
+            timestamp,
+            data
+          }));
+          h264Frames++;
+        } catch (e) {
+          log(`decode submit error ${e.message || e}`);
+        }
+      };
+    }
+
+    async function poll() {
+      while (pc) {
+        const r = await fetch(`/api/poll?room=${encodeURIComponent(room)}&role=device`, { cache: "no-store" });
+        const j = await r.json();
+        for (const m of j.messages) {
+          if (m.type === "offer" && pc.signalingState === "stable") {
+            await pc.setRemoteDescription(m.data);
+            const answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+            await send("controller", "answer", pc.localDescription);
+            status("answer sent");
+          }
+          if (m.type === "ice") await pc.addIceCandidate(m.data).catch(() => {});
+        }
+        await new Promise(r => setTimeout(r, 80));
+      }
+    }
+
+    async function start() {
+      ip = document.getElementById("ip").value.trim();
+      room = document.getElementById("room").value.trim() || "default";
+      fps = Math.max(1, Math.min(60, Number(document.getElementById("fps").value || 30)));
+      await readSize();
+      connectIphoneControlWs();
+      await initDecoder();
+
+      const ice = await fetch("/api/ice-servers", { cache: "no-store" }).then(r => r.json());
+      log(`ice servers ${ice.iceServers.length || 1}`);
+      pc = new RTCPeerConnection({ iceServers: ice.iceServers });
+      pc.onconnectionstatechange = () => status(`pc ${pc.connectionState}`);
+      pc.oniceconnectionstatechange = () => log(`ice ${pc.iceConnectionState}`);
+      pc.onicecandidate = ev => ev.candidate && send("controller", "ice", ev.candidate);
+      pc.ondatachannel = ev => {
+        const dc = ev.channel;
+        dc.onopen = () => log("control datachannel open");
+        dc.onmessage = msg => handleControl(msg.data);
+      };
+
+      const stream = canvas.captureStream(0);
+      videoTrack = stream.getVideoTracks()[0];
+      videoTrack.contentHint = "motion";
+      const sender = pc.addTrack(videoTrack, stream);
+      const params = sender.getParameters();
+      params.encodings = [{ maxBitrate: 4000000, maxFramerate: fps }];
+      params.degradationPreference = "maintain-framerate";
+      sender.setParameters(params).catch(() => {});
+
+      connectH264Ws();
+      status("waiting offer");
+      poll();
+    }
+
+    document.getElementById("start").onclick = start;
+  </script>
+</body>
+</html>
