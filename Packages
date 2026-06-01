@@ -15,18 +15,18 @@ SHA1: 3858e869f9e407d908e9b588f9f58a81943fac96
 SHA256: efebecf9563ff70a8dc4c87d32aed1da37d2b49c05fd16aadcc326ba989ecfb6
 
 Package: com.ctf.h264remote
-Version: 0.1.2
+Version: 0.1.3
 Architecture: iphoneos-arm
 Maintainer: CTF Team
 Installed-Size: 120
 Depends: mobilesubstrate
-Filename: ./debs/com.ctf.h264remote_0.1.2_iphoneos-arm.deb
-Size: 5434
-MD5sum: 0b4f191586d88985bbe362279d91cb80
-SHA1: 319bc1ebc8923ca96a26c29b7f8c2e00ebf6c9a9
-SHA256: d2c93a6c4ece390ce1ec5f9d83e2dfa6628578acad032f99f07d063d1ca7e395
+Filename: ./debs/com.ctf.h264remote_0.1.3_iphoneos-arm.deb
+Size: 5594
+MD5sum: 1b8ab44312ae07e3eabcc84042a3a892
+SHA1: 9124b6cb2807a00363bd2098e0b2f62ae958bb63
+SHA256: cbc1da4e3fad6861c5f1cdf5c9d1ffde1f34426c3bd9c2ed4cd5d69686a8f789
 Section: Tweaks
-Description: H.264 screen stream probe for authorized iPhone remote-control testing.
- Provides ws://device-ip:58588/ Annex-B H.264 video stream. Rollback build based on the last stable capture path.
+Description: H.264 screen stream probe with SIGPIPE protection for authorized iPhone remote-control testing.
+ Provides ws://device-ip:58588/ Annex-B H.264 video stream.
 Author: CTF Team
 Name: H264 Remote Probe
