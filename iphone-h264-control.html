@@ -7,7 +7,7 @@
   <style>
     html, body { margin: 0; height: 100%; background: #050505; color: #eee; font-family: system-ui, sans-serif; overflow: hidden; }
     #bar { position: fixed; left: 0; right: 0; top: 0; z-index: 3; padding: 8px; background: rgba(0,0,0,.72); }
-    #screen { width: 100vw; height: 100vh; display: block; background: #000; touch-action: none; }
+    #screen { display: block; background: #000; touch-action: none; }
     input, button { font-size: 14px; }
     #log { position: fixed; left: 8px; bottom: 8px; right: 8px; max-height: 20vh; overflow: hidden; color: #ccc; font-size: 11px; pointer-events: none; white-space: pre-wrap; }
   </style>
@@ -49,14 +49,23 @@
       height = Number(j.height || 667);
       canvas.width = width;
       canvas.height = height;
+      resizeCanvasCss();
       status(`screen ${width}x${height}`);
+    }
+    function resizeCanvasCss() {
+      const sw = window.innerWidth;
+      const sh = window.innerHeight;
+      const scale = Math.min(sw / width, sh / height);
+      const cssW = Math.floor(width * scale);
+      const cssH = Math.floor(height * scale);
+      canvas.style.width = `${cssW}px`;
+      canvas.style.height = `${cssH}px`;
+      canvas.style.marginLeft = `${Math.floor((sw - cssW) / 2)}px`;
+      canvas.style.marginTop = `${Math.floor((sh - cssH) / 2)}px`;
     }
     function fitRect() {
       const rect = canvas.getBoundingClientRect();
-      const scale = Math.min(rect.width / width, rect.height / height);
-      const dw = width * scale;
-      const dh = height * scale;
-      return { rect, dw, dh, ox: rect.left + (rect.width - dw) / 2, oy: rect.top + (rect.height - dh) / 2 };
+      return { rect, dw: rect.width, dh: rect.height, ox: rect.left, oy: rect.top };
     }
     function eventPoint(ev) {
       const p = ev.touches ? ev.touches[0] : ev;
@@ -157,6 +166,7 @@
     canvas.addEventListener("touchstart", ev => touch("down", ev), { passive: false });
     canvas.addEventListener("touchmove", ev => touch("move", ev), { passive: false });
     canvas.addEventListener("touchend", ev => touch("up", ev), { passive: false });
+    window.addEventListener("resize", resizeCanvasCss);
   </script>
 </body>
 </html>
