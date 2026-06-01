@@ -30,7 +30,7 @@
     let ip = "192.168.31.72";
     let width = 375, height = 667;
     let h264Ws, controlWs, decoder;
-    let timestamp = 0, h264Frames = 0, renderedFrames = 0, droppedFrames = 0, lastStat = performance.now();
+    let timestamp = 0, h264Frames = 0, renderedFrames = 0, droppedFrames = 0, keyFrames = 0, h264Bytes = 0, lastStat = performance.now();
 
     function log(s) {
       console.log(s);
@@ -76,10 +76,12 @@
       renderedFrames++;
       const now = performance.now();
       if (now - lastStat >= 1000) {
-        status(`h264 ${h264Frames} fps render ${renderedFrames} drop ${droppedFrames} q ${decoder ? decoder.decodeQueueSize : 0}`);
+        status(`rx ${h264Frames} fps render ${renderedFrames} key ${keyFrames} drop ${droppedFrames} q ${decoder ? decoder.decodeQueueSize : 0} ${(h264Bytes / 1024).toFixed(0)}KB/s`);
         h264Frames = 0;
         renderedFrames = 0;
         droppedFrames = 0;
+        keyFrames = 0;
+        h264Bytes = 0;
         lastStat = now;
       }
     }
@@ -111,13 +113,11 @@
         if (!(ev.data instanceof ArrayBuffer)) return;
         const data = new Uint8Array(ev.data);
         const key = hasNal(data, 5) || hasNal(data, 7);
-        if (!key && decoder.decodeQueueSize > 1) {
-          droppedFrames++;
-          return;
-        }
+        h264Frames++;
+        h264Bytes += data.byteLength;
+        if (key) keyFrames++;
         timestamp += 33333;
         decoder.decode(new EncodedVideoChunk({ type: key ? "key" : "delta", timestamp, data }));
-        h264Frames++;
       };
     }
     function connectControl() {
