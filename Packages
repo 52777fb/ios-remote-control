@@ -15,18 +15,18 @@ SHA1: 3858e869f9e407d908e9b588f9f58a81943fac96
 SHA256: efebecf9563ff70a8dc4c87d32aed1da37d2b49c05fd16aadcc326ba989ecfb6
 
 Package: com.ctf.h264remote
-Version: 0.1.5
+Version: 0.1.6
 Architecture: iphoneos-arm
 Maintainer: CTF Team
 Installed-Size: 120
 Depends: mobilesubstrate
-Filename: ./debs/com.ctf.h264remote_0.1.5_iphoneos-arm.deb
-Size: 5826
-MD5sum: f83de5eef9d3f8512173f2aed01f74ed
-SHA1: 40c4769fa4df0a3af1c2543b6e07f08b725ffb9a
-SHA256: fc453841ce429f73e1c4d866703c0d77071f88fd6de72457e5f5dd056f0ab5de
+Filename: ./debs/com.ctf.h264remote_0.1.6_iphoneos-arm.deb
+Size: 5634
+MD5sum: 33cfce9631299fec3dca3bdc56cfde8c
+SHA1: e56e69b0fa7b9c96924843faffa82aeffc323b90
+SHA256: 25bc5667f1e8ce662143dabb57ee2fdadb7f505788c932e35bd91a5e2c4710d7
 Section: Tweaks
-Description: Low-latency H.264 screen stream probe at logical resolution with multi-window capture.
+Description: Low-latency H.264 fast mode using logical resolution, keyWindow capture, 20fps and low bitrate.
  Provides ws://device-ip:58588/ Annex-B H.264 video stream.
 Author: CTF Team
 Name: H264 Remote Probe
