@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>iPhone H264 Direct Control</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #050505; color: #eee; font-family: system-ui, sans-serif; overflow: hidden; }
+    #bar { position: fixed; left: 0; right: 0; top: 0; z-index: 3; padding: 8px; background: rgba(0,0,0,.72); }
+    #screen { width: 100vw; height: 100vh; display: block; background: #000; touch-action: none; }
+    input, button { font-size: 14px; }
+    #log { position: fixed; left: 8px; bottom: 8px; right: 8px; max-height: 20vh; overflow: hidden; color: #ccc; font-size: 11px; pointer-events: none; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    iPhone <input id="ip" value="192.168.31.72" size="14">
+    <button id="start">Connect Direct H264</button>
+    <button id="wake">Lock/Wake</button>
+    <span id="status">idle</span>
+  </div>
+  <canvas id="screen" width="375" height="667"></canvas>
+  <pre id="log"></pre>
+  <script>
+    const canvas = document.getElementById("screen");
+    const ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
+    const statusEl = document.getElementById("status");
+    const logEl = document.getElementById("log");
+
+    let ip = "192.168.31.72";
+    let width = 375, height = 667;
+    let h264Ws, controlWs, decoder;
+    let timestamp = 0, h264Frames = 0, renderedFrames = 0, droppedFrames = 0, lastStat = performance.now();
+
+    function log(s) {
+      console.log(s);
+      logEl.textContent = `${new Date().toLocaleTimeString()} ${s}\n` + logEl.textContent.slice(0, 1500);
+    }
+    function status(s) { statusEl.textContent = `${new Date().toLocaleTimeString()} ${s}`; }
+    function sameOriginWs(path) {
+      const proto = location.protocol === "https:" ? "wss:" : "ws:";
+      return `${proto}//${location.host}${path}`;
+    }
+    async function readSize() {
+      const r = await fetch(`/screen-size?ip=${encodeURIComponent(ip)}&_=${Date.now()}`, { cache: "no-store" });
+      if (!r.ok) throw new Error(`screen-size HTTP ${r.status}`);
+      const j = await r.json();
+      width = Number(j.width || 375);
+      height = Number(j.height || 667);
+      canvas.width = width;
+      canvas.height = height;
+      status(`screen ${width}x${height}`);
+    }
+    function fitRect() {
+      const rect = canvas.getBoundingClientRect();
+      const scale = Math.min(rect.width / width, rect.height / height);
+      const dw = width * scale;
+      const dh = height * scale;
+      return { rect, dw, dh, ox: rect.left + (rect.width - dw) / 2, oy: rect.top + (rect.height - dh) / 2 };
+    }
+    function eventPoint(ev) {
+      const p = ev.touches ? ev.touches[0] : ev;
+      const f = fitRect();
+      return {
+        x: Math.max(0, Math.min(width, Math.round((p.clientX - f.ox) / f.dw * width))),
+        y: Math.max(0, Math.min(height, Math.round((p.clientY - f.oy) / f.dh * height))),
+      };
+    }
+    function drawFrame(frame) {
+      ctx.save();
+      ctx.translate(0, height);
+      ctx.scale(1, -1);
+      ctx.drawImage(frame, 0, 0, width, height);
+      ctx.restore();
+      frame.close();
+      renderedFrames++;
+      const now = performance.now();
+      if (now - lastStat >= 1000) {
+        status(`h264 ${h264Frames} fps render ${renderedFrames} drop ${droppedFrames} q ${decoder ? decoder.decodeQueueSize : 0}`);
+        h264Frames = 0;
+        renderedFrames = 0;
+        droppedFrames = 0;
+        lastStat = now;
+      }
+    }
+    function hasNal(data, type) {
+      for (let i = 0; i < data.length - 4; i++) {
+        let p = 0;
+        if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 1) p = i + 3;
+        else if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0 && data[i + 3] === 1) p = i + 4;
+        if (p && p < data.length && (data[p] & 0x1f) === type) return true;
+      }
+      return false;
+    }
+    async function initDecoder() {
+      if (!("VideoDecoder" in window)) throw new Error("Chrome/WebCodecs required");
+      decoder = new VideoDecoder({ output: drawFrame, error: e => log(`decoder ${e.message || e}`) });
+      decoder.configure({
+        codec: "avc1.42E01E",
+        optimizeForLatency: true,
+        avc: { format: "annexb" }
+      });
+    }
+    function connectH264() {
+      h264Ws = new WebSocket(sameOriginWs(`/h264?ip=${encodeURIComponent(ip)}`));
+      h264Ws.binaryType = "arraybuffer";
+      h264Ws.onopen = () => log("h264 ws open");
+      h264Ws.onclose = () => log("h264 ws closed");
+      h264Ws.onerror = () => log("h264 ws error");
+      h264Ws.onmessage = ev => {
+        if (!(ev.data instanceof ArrayBuffer)) return;
+        const data = new Uint8Array(ev.data);
+        const key = hasNal(data, 5) || hasNal(data, 7);
+        if (!key && decoder.decodeQueueSize > 1) {
+          droppedFrames++;
+          return;
+        }
+        timestamp += 33333;
+        decoder.decode(new EncodedVideoChunk({ type: key ? "key" : "delta", timestamp, data }));
+        h264Frames++;
+      };
+    }
+    function connectControl() {
+      controlWs = new WebSocket(sameOriginWs(`/control-ws?ip=${encodeURIComponent(ip)}`));
+      controlWs.onopen = () => {
+        log("control ws open");
+        setInterval(() => { try { controlWs.send("PING"); } catch (_) {} }, 1000);
+      };
+      controlWs.onclose = () => log("control ws closed");
+      controlWs.onerror = () => log("control ws error");
+    }
+    function sendControl(obj) {
+      if (controlWs && controlWs.readyState === WebSocket.OPEN) controlWs.send(JSON.stringify(obj));
+    }
+    function touch(type, ev) {
+      const p = eventPoint(ev);
+      const touchType = type === "down" ? 1 : type === "move" ? 2 : 0;
+      sendControl({ x: p.x, y: p.y, type: "touch", touchType });
+      ev.preventDefault();
+    }
+    async function start() {
+      ip = document.getElementById("ip").value.trim();
+      await readSize();
+      await initDecoder();
+      connectControl();
+      connectH264();
+    }
+    document.getElementById("start").onclick = start;
+    document.getElementById("wake").onclick = () => {
+      sendControl({ down: 1, type: "action", action: 1 });
+      setTimeout(() => sendControl({ down: 0, type: "action", action: 1 }), 70);
+    };
+    canvas.addEventListener("pointerdown", ev => touch("down", ev));
+    canvas.addEventListener("pointermove", ev => ev.buttons && touch("move", ev));
+    canvas.addEventListener("pointerup", ev => touch("up", ev));
+    canvas.addEventListener("pointercancel", ev => touch("up", ev));
+    canvas.addEventListener("touchstart", ev => touch("down", ev), { passive: false });
+    canvas.addEventListener("touchmove", ev => touch("move", ev), { passive: false });
+    canvas.addEventListener("touchend", ev => touch("up", ev), { passive: false });
+  </script>
+</body>
+</html>
