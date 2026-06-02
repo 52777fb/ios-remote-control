@@ -1,24 +1,24 @@
-# iPhone Remote Control & iMessage Forwarding
+# iPhone 设备控制与 iMessage 自动转发
 
-Minimal release repository for two maintained jailbreak packages:
+这是一个精简的软件源仓库，只保留两个仍在维护的包：
 
 - `com.devicecontrol.remote`
 - `com.ctf.immsgbridge`
 
-This repo is kept intentionally small and only contains the currently shipped packages plus the package index files required by Sileo/Zebra/Cydia-style clients.
+仓库内容已清理为最小发布集，只包含当前版本 deb 和软件源索引文件。
 
 ---
 
-## Packages
+## 当前包
 
-| Package | Version | Purpose |
+| 包名 | 版本 | 作用 |
 |---|---:|---|
-| `com.devicecontrol.remote` | `1.0.1` | Web-based device control plugin |
-| `com.ctf.immsgbridge` | `0.2.4` | iMessage-only forwarding bridge |
+| `com.devicecontrol.remote` | `1.0.1` | 设备控制插件 |
+| `com.ctf.immsgbridge` | `0.2.4` | iMessage-only 自动转发桥 |
 
 ---
 
-## Repository Structure
+## 仓库结构
 
 ```text
 .
@@ -35,28 +35,28 @@ This repo is kept intentionally small and only contains the currently shipped pa
 
 ---
 
-## Component Overview
+## 组件关系
 
 ```mermaid
 flowchart LR
-  A["Jailbroken iPhone"] --> B["Device Control"]
-  A --> C["iMessage Bridge"]
-  B --> D["Browser Control Page"]
-  C --> E["MobileSMS Injection"]
+  A["越狱 iPhone"] --> B["设备控制插件"]
+  A --> C["iMessage 自动转发桥"]
+  B --> D["网页控制页"]
+  C --> E["MobileSMS 注入发送"]
 ```
 
 ---
 
-## Forwarding Constraints
+## 自动转发约束
 
-- iMessage only
-- No SMS fallback
-- No CoreTelephony send path
+- 仅允许 iMessage
+- 不允许 SMS fallback
+- 不使用 CoreTelephony 短信发送路径
 
 ---
 
-## Maintenance Notes
+## 维护说明
 
-- Historical test packages have been removed
-- Unused remote-control variants have been removed
-- The source is intentionally trimmed to the current stable release set
+- 历史实验包已清理
+- 其他远控方案已清理
+- 仓库只保留当前稳定发布集
