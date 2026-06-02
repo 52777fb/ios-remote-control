@@ -1,18 +1,18 @@
 Package: com.zxc.simpleremotecontrol
-Name: 设备控制
-Description: 授权测试设备控制组件。Web 控制台：http://设备IP:58586；WebSocket：58587。用于赛事安全测试与功能验证。
-Maintainer: 赛事团队
-Author: 赛事团队
+Name: ????
+Description: ??????????????????????????????? iOS 13+???? Web ????http://??IP:58586?WebSocket?58587?
+Maintainer: CTF Team
+Author: CTF Team
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
 Architecture: iphoneos-arm
-Version: 0.1.25
+Version: 0.1.26
 Installed-Size: 4500
-Filename: ./debs/com.zxc.simpleremotecontrol_0.1.25_iphoneos-arm.deb
-Size: 1730766
-MD5sum: b4eb80ec3dcbbbe5c13de9c9a0730cf1
-SHA1: 3858e869f9e407d908e9b588f9f58a81943fac96
-SHA256: efebecf9563ff70a8dc4c87d32aed1da37d2b49c05fd16aadcc326ba989ecfb6
+Filename: ./debs/com.zxc.simpleremotecontrol_0.1.26_iphoneos-arm.deb
+Size: 2453653
+MD5sum: e6f008b557ab23dd58d68eb5adb0bfc4
+SHA1: eafe925b89191d978b8c5d584a8c98caac831fcd
+SHA256: a4e641ea7219b86a6cc50d27131b1d8fcddbf70ffc9e37ccc5988be19be3ea6f
 
 Package: com.ctf.h264remote
 Version: 0.1.6
