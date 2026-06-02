@@ -1,18 +1,20 @@
-Package: com.zxc.simpleremotecontrol
+Package: com.ctf.devicecontrol
 Name: Device Control
-Description: Authorized test device control component. Public-style UI with personal identifiers removed. Supports iOS 13+. LAN Web console: http://device-ip:58586 ; WebSocket: 58587.
+Description: Web-based iPhone remote control component with a public-style UI and personal identifiers removed. Supports iOS 13+. LAN Web console: http://device-ip:58586 ; WebSocket: 58587.
 Maintainer: CTF Team
 Author: CTF Team
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
+Conflicts: com.zxc.simpleremotecontrol
+Replaces: com.zxc.simpleremotecontrol
 Architecture: iphoneos-arm
-Version: 0.1.26
+Version: 1.0.0
 Installed-Size: 4500
-Filename: ./debs/com.zxc.simpleremotecontrol_0.1.26_iphoneos-arm.deb
-Size: 2453604
-MD5sum: 23b079812e720e32e234474f30a745d0
-SHA1: 0859b508b893483ea0a02eb7ca57fa006a33f139
-SHA256: f3bebb78d349ff4dc7c3911ac7481c94cbd85f1f4829e0ebe87a55ce29a1e512
+Filename: ./debs/com.ctf.devicecontrol_1.0.0_iphoneos-arm.deb
+Size: 2453628
+MD5sum: 1410e3fc631b5291e6552763b49ebf1e
+SHA1: 441e6dced5918a2f13eda0c41879460a3d9d2e64
+SHA256: 971dd9a7cbfdbd3721ebd329e6886c5a2e67153067aea109dcf1490b92c31fc0
 
 Package: com.ctf.h264remote
 Version: 0.1.6
