@@ -8,13 +8,13 @@ Depends: mobilesubstrate, preferenceloader
 Conflicts: com.zxc.simpleremotecontrol
 Replaces: com.zxc.simpleremotecontrol
 Architecture: iphoneos-arm
-Version: 1.0.2
+Version: 1.0.3
 Installed-Size: 4500
-Filename: ./debs/com.devicecontrol.remote_1.0.2_iphoneos-arm.deb
-Size: 1218144
-MD5sum: f6ed9de0a270a5080157b5139bc787fa
-SHA1: 39810af2d5ccd5c81395e55c31299db252d731cf
-SHA256: 831d6505e7ac83f7fb05162371728c6bc6edaf1e016f8da90655e002a7f702ef
+Filename: ./debs/com.devicecontrol.remote_1.0.3_iphoneos-arm.deb
+Size: 1218332
+MD5sum: f205530b354732bc8c5b6a872dd15349
+SHA1: c455c437a9d3e59526b62ef8f5b72482bfe39f31
+SHA256: 93d12bffc31f0984a808b7146f29cab5db2e49140ed900fd87ba1a35914e1ad0
 
 Package: com.ctf.h264remote
 Version: 0.1.6
