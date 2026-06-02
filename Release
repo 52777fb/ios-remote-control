@@ -1,7 +1,8 @@
-Origin: iOS Remote Control
-Label: iOS Remote Control
+Origin: iPhone Remote Control
+Label: iPhone Remote Control
 Suite: stable
 Version: 1.0
-Codename: stable
+Codename: iphoneos-arm
 Architectures: iphoneos-arm
 Components: main
+Description: iPhone remote control and iMessage forwarding packages
