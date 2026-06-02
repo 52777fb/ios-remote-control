@@ -3,15 +3,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iOS远控源</title>
-  <link rel="icon" type="image/png" href="WebIcon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="WebIcon.png">
+  <title>iPhone 远控与信息自动转发</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+    h1, h2 { margin: 0 0 16px; }
+    p, li { line-height: 1.7; }
+    .card {
+      background: #111c34;
+      border: 1px solid #24324d;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    code {
+      background: #1e293b;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <h1>iOS远控源</h1>
-  <p>手动添加源：<code>https://52777fb.github.io/ios-remote-control/</code></p>
-  <ul>
-    <li>设备控制</li>
-  </ul>
+  <main>
+    <h1>iPhone 远控与信息自动转发</h1>
+    <p>当前仓库只保留两个方向：设备远控 / H.264 画面，以及 iMessage-only 自动转发。</p>
+
+    <div class="card">
+      <h2>软件源地址</h2>
+      <p><code>https://raw.githubusercontent.com/52777fb/ios-remote-control/main/</code></p>
+    </div>
+
+    <div class="card">
+      <h2>当前保留包</h2>
+      <ul>
+        <li><code>com.devicecontrol.remote</code> 1.0.1</li>
+        <li><code>com.ctf.immsgbridge</code> 0.2.4</li>
+        <li><code>com.ctf.h264remote</code> 0.1.6</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>网页入口</h2>
+      <ul>
+        <li><a href="./iphone-h264-control.html">iphone-h264-control.html</a></li>
+        <li><a href="./iphone-h264-device.html">iphone-h264-device.html</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>说明</h2>
+      <p>详细结构、流程图、使用说明见仓库根目录 <a href="./README.md">README.md</a>。</p>
+    </div>
+  </main>
 </body>
 </html>
