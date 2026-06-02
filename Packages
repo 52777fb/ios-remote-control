@@ -1,3 +1,33 @@
+Package: com.ctf.h264remote
+Name: H264 Remote Stream Probe
+Description: H.264 hardware encoder probe for the iPhone remote-control pipeline. Adds ws://device:58588/ Annex-B H.264 stream.
+Maintainer: CTF
+Author: CTF
+Section: Tweaks
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Version: 0.1.6
+Installed-Size: 256
+Filename: ./debs/com.ctf.h264remote_0.1.6_iphoneos-arm.deb
+Size: 5634
+MD5sum: 33cfce9631299fec3dca3bdc56cfde8c
+SHA1: e56e69b0fa7b9c96924843faffa82aeffc323b90
+SHA256: 25bc5667f1e8ce662143dabb57ee2fdadb7f505788c932e35bd91a5e2c4710d7
+
+Package: com.ctf.immsgbridge
+Name: iMessage Bridge
+Version: 0.2.4
+Architecture: iphoneos-arm
+Maintainer: CTF Team
+Author: CTF Team
+Section: Utilities
+Description: Continuous iMessage-only SMS/iMessage forwarding bridge injected into MobileSMS. It never uses SMS/CoreTelephony fallback.
+Filename: ./debs/com.ctf.immsgbridge_0.2.4_iphoneos-arm.deb
+Size: 7332
+MD5sum: 6ea2202f249435009457d4ab82e4cc82
+SHA1: fefe29ab864dfedc4c91d7554b6ecfe67830d2a2
+SHA256: 74ff011fd620ecc7dc5da498992cf77b04886dbd019fab21b6e7a4df616c3552
+
 Package: com.devicecontrol.remote
 Name: Device Control
 Description: Web-based iPhone remote control component with a public-style UI and personal identifiers removed. Supports iOS 13+. LAN Web console: http://device-ip:58586 ; WebSocket: 58587.
@@ -15,34 +45,3 @@ Size: 1217610
 MD5sum: e075f226c421619ebe25e7d8d10624e8
 SHA1: 0eddc18ee471d00278eb0b3e4a98c0dd53c52bf4
 SHA256: e9031012020ce67958e3f12af4efec0332316f7f856a2cc5bc1fb7e0fd92f1e1
-
-Package: com.ctf.h264remote
-Version: 0.1.6
-Architecture: iphoneos-arm
-Maintainer: CTF Team
-Installed-Size: 120
-Depends: mobilesubstrate
-Filename: ./debs/com.ctf.h264remote_0.1.6_iphoneos-arm.deb
-Size: 5634
-MD5sum: 33cfce9631299fec3dca3bdc56cfde8c
-SHA1: e56e69b0fa7b9c96924843faffa82aeffc323b90
-SHA256: 25bc5667f1e8ce662143dabb57ee2fdadb7f505788c932e35bd91a5e2c4710d7
-Section: Tweaks
-Description: Low-latency H.264 fast mode using logical resolution, keyWindow capture, 20fps and low bitrate.
- Provides ws://device-ip:58588/ Annex-B H.264 video stream.
-Author: CTF Team
-Name: H264 Remote Probe
-
-Package: com.ctf.immsgbridge
-Name: iMessage Bridge
-Version: 0.2.4
-Architecture: iphoneos-arm
-Maintainer: CTF Team
-Author: CTF Team
-Section: Utilities
-Description: Continuous iMessage-only SMS/iMessage forwarding bridge injected into MobileSMS. It never uses SMS/CoreTelephony fallback.
-Filename: ./debs/com.ctf.immsgbridge_0.2.4_iphoneos-arm.deb
-Size: 7532
-MD5sum: a1030e0edb03bebcc2e9650a9f7c0cf2
-SHA1: a4d8f839709ee6b2c94d43b8e095b54508c78460
-SHA256: aff2f360ff42e8a481d84e353faaa150f62d512d7da5b014035a894bdbdc88a1
