@@ -33,13 +33,13 @@ Name: H264 Remote Probe
 
 Package: com.ctf.immsgbridge
 Name: iMessage Bridge
-Version: 0.2.5
+Version: 0.2.4
 Architecture: iphoneos-arm
 Maintainer: CTF Team
 Author: CTF Team
 Section: Utilities
 Description: Continuous iMessage-only SMS/iMessage forwarding bridge injected into MobileSMS. It never uses SMS/CoreTelephony fallback.
-Filename: ./debs/com.ctf.immsgbridge_0.2.5_iphoneos-arm.deb
+Filename: ./debs/com.ctf.immsgbridge_0.2.4_iphoneos-arm.deb
 Size: 7532
 MD5sum: a1030e0edb03bebcc2e9650a9f7c0cf2
 SHA1: a4d8f839709ee6b2c94d43b8e095b54508c78460
