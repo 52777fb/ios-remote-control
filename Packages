@@ -1,6 +1,6 @@
 Package: com.zxc.simpleremotecontrol
-Name: ????
-Description: ??????????????????????????????? iOS 13+???? Web ????http://??IP:58586?WebSocket?58587?
+Name: Device Control
+Description: Authorized test device control component. Public-style UI with personal identifiers removed. Supports iOS 13+. LAN Web console: http://device-ip:58586 ; WebSocket: 58587.
 Maintainer: CTF Team
 Author: CTF Team
 Section: Tweaks
@@ -9,10 +9,10 @@ Architecture: iphoneos-arm
 Version: 0.1.26
 Installed-Size: 4500
 Filename: ./debs/com.zxc.simpleremotecontrol_0.1.26_iphoneos-arm.deb
-Size: 2453653
-MD5sum: e6f008b557ab23dd58d68eb5adb0bfc4
-SHA1: eafe925b89191d978b8c5d584a8c98caac831fcd
-SHA256: a4e641ea7219b86a6cc50d27131b1d8fcddbf70ffc9e37ccc5988be19be3ea6f
+Size: 2453629
+MD5sum: 43f77e047c4e5cd9da20a4e8a015ce41
+SHA1: 19cfef847a25e330b09db6d21d8cc6a1620badcf
+SHA256: db9223f99d379677f049183b0cdae407ec8b388100da3c8d8d98d4c5087a79fb
 
 Package: com.ctf.h264remote
 Version: 0.1.6
