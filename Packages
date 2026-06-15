@@ -1,16 +1,16 @@
 Package: com.ctf.immsgbridge
 Name: iMessage Bridge
-Version: 0.2.4
+Version: 0.2.5
 Architecture: iphoneos-arm
 Maintainer: CTF Team
 Author: CTF Team
 Section: Utilities
 Description: Continuous iMessage-only SMS/iMessage forwarding bridge injected into MobileSMS. It never uses SMS/CoreTelephony fallback.
-Filename: ./debs/com.ctf.immsgbridge_0.2.4_iphoneos-arm.deb
-Size: 7332
-MD5sum: 6ea2202f249435009457d4ab82e4cc82
-SHA1: fefe29ab864dfedc4c91d7554b6ecfe67830d2a2
-SHA256: 74ff011fd620ecc7dc5da498992cf77b04886dbd019fab21b6e7a4df616c3552
+Filename: ./debs/com.ctf.immsgbridge_0.2.5_iphoneos-arm.deb
+Size: 7366
+MD5sum: 8f90a9f92c3ebba4d70df72e5b117b8e
+SHA1: e7488fc5a6c491d5b20eac4a4c001a212c0ad7f0
+SHA256: 9b891b60b8f8ab8804dd92c05f998e4a4e9786c4e99241421a9d2b7b11619e9e
 
 Package: com.devicecontrol.remote
 Name: Device Control

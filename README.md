@@ -14,7 +14,7 @@
 | 包名 | 版本 | 用途 |
 |---|---:|---|
 | `com.devicecontrol.remote` | `1.0.1` | 局域网网页远程控制插件 |
-| `com.ctf.immsgbridge` | `0.2.4` | 只走 iMessage 的自动转发插件 |
+| `com.ctf.immsgbridge` | `0.2.5` | 只走 iMessage 的自动转发插件 |
 
 ---
 
